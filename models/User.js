@@ -27,11 +27,8 @@ const userSchema = new mongoose.Schema({
         location: String,
         website: String,
         picture: String,
-    },
-
-    notes: {
-        images: Array,
-        processed: Array
+        notePictures: Array,
+        noteProcessed: Array
     }
 }, { timestamps: true });
 
