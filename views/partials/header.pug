@@ -18,6 +18,8 @@
         //-   a.nav-link(href='/status') Status
         li.nav-item(class=(title === 'Convert') ? 'active' : undefined)
           a.nav-link(href='/convert') Convert
+        li.nav-item(class=(title === 'Notes') ? 'active' : undefined)
+          a.nav-link(href='/notes') Notes
       ul.nav.navbar-nav.ml-auto
         if !user
           li.nav-item(class=(title === 'Login') ? 'active' : undefined)
