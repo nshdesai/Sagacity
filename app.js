@@ -89,14 +89,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-    if (req.path === '/api/upload') {
+    if (req.path === '/convert') {
         // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
+        const file = req.file;
+        if (!file) {
+            const error = new Error('Please upload a file')
+            error.httpStatusCode = 400
+            return next(error)
+        }
+        res.send(req.file);
         next();
     } else {
         lusca.csrf()(req, res, next);
     }
 });
 app.use(lusca.xframe('SAMEORIGIN'));
+app.use(lusca.hsts({ maxAge: 31536000 }));
+app.use(lusca.p3p('ABCDEF'));
 app.use(lusca.xssProtection(true));
 app.disable('x-powered-by');
 app.use((req, res, next) => {
