@@ -20,7 +20,11 @@ exports.getFileUpload = (req, res) => {
 };
 
 exports.postFileUpload = (req, res) => {
-    req.flash('success', { msg: 'File was uploaded successfully.' });
+    if (!req.file) {
+        req.flash('errors', { msg: 'You did not select a file.' });
+    } else {
+        req.flash('success', { msg: 'File was uploaded successfully.' });
+    }
     res.redirect('/convert');
     // res.send(req.file);
 };
