@@ -1,7 +1,7 @@
 .navbar.navbar-light.fixed-top.navbar-expand-lg
   .container
     a.navbar-brand(href='/')
-      i.fas.fa-cube
+      i(class='text-blue').fas.fa-edit
       | Sagacity
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
       span.sr-only Toggle navigation
@@ -18,8 +18,10 @@
         //-   a.nav-link(href='/status') Status
         li.nav-item(class=(title === 'Convert') ? 'active' : undefined)
           a.nav-link(href='/convert') Convert
-        li.nav-item(class=(title === 'Notes') ? 'active' : undefined)
-          a.nav-link(href='/notes') Notes
+        //- If user is logged in, show the title tab
+        if user
+          li.nav-item(class=(title === 'Notes') ? 'active' : undefined)
+            a.nav-link(href='/notes') Notes
       ul.nav.navbar-nav.ml-auto
         if !user
           li.nav-item(class=(title === 'Login') ? 'active' : undefined)

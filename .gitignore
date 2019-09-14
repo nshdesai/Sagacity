@@ -31,6 +31,9 @@ public/js/lib/popper.min*
 #Virtualenv
 venv/
 
+#Ignore model files
+models/
+
 # Dependency directory
 node_modules
 bower_components
