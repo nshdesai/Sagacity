@@ -2,7 +2,7 @@
   .container
     a.navbar-brand(href='/')
       i.fas.fa-cube
-      | Project name
+      | Sagacity
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
       span.sr-only Toggle navigation
       span.navbar-toggler-icon
@@ -16,6 +16,8 @@
           a.nav-link(href='/contact') Contact
         li.nav-item(class=(title === 'Status') ? 'active' : undefined)
           a.nav-link(href='/status') Status
+        li.nav-item(class=(title === 'Convert') ? 'active' : undefined)
+          a.nav-link(href='/convert') Convert
       ul.nav.navbar-nav.ml-auto
         if !user
           li.nav-item(class=(title === 'Login') ? 'active' : undefined)
