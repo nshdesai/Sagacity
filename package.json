@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "Nishkrit Desai",
   "contributors": [
-      "Ri Xin Yang (github.com/MatoPlus)"
+    "Ri Xin Yang (github.com/MatoPlus)"
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
