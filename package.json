@@ -1,15 +1,15 @@
 {
   "name": "Sagacity",
-  "version": "5.2.0",
+  "version": "1.0.1",
   "description": "An application that takes pictures or fragmented notes and converts them into high quality, readable and organized notes",
   "repository": {
     "type": "git",
     "url": "https://github.com/nshdesai/Sagacity"
   },
   "license": "MIT",
-  "author": "Sahat Yalkabov",
+  "author": "Nishkrit Desai",
   "contributors": [
-    "Yashar Fakhari (https://github.com/YasharF)"
+      "Ri Xin Yang (github.com/MatoPlus)"
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
