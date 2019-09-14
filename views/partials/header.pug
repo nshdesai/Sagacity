@@ -16,10 +16,10 @@
         //-   a.nav-link(href='/contact') Contact
         //- li.nav-item(class=(title === 'Status') ? 'active' : undefined)
         //-   a.nav-link(href='/status') Status
-        li.nav-item(class=(title === 'Convert') ? 'active' : undefined)
-          a.nav-link(href='/convert') Convert
-        //- If user is logged in, show the title tab
+        //- If user is logged in, show the convert and notes tab
         if user
+          li.nav-item(class=(title === 'Convert') ? 'active' : undefined)
+            a.nav-link(href='/convert') Convert
           li.nav-item(class=(title === 'Notes') ? 'active' : undefined)
             a.nav-link(href='/notes') Notes
       ul.nav.navbar-nav.ml-auto
