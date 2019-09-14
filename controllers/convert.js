@@ -26,7 +26,7 @@ const { google } = require('googleapis');
 const Quickbooks = require('node-quickbooks');
 const validator = require('validator');
 const vision = require('@google-cloud/vision');
-const client = vision.ImageAnnotatorClient();
+const client = new vision.ImageAnnotatorClient();
 
 Quickbooks.setOauthVersion('2.0');
 
