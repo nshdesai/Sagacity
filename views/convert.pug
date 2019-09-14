@@ -6,10 +6,9 @@ block content
       i.fas.fa-upload.fa-sm
       | File Upload
 
-  h3 File Upload Form
+  p Upload file to be processed into a text file.
   .row
     .col-md-6
-      p All files will be uploaded to "/uploads" directory.
       form(role='form', enctype='multipart/form-data', method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
         .form-group
