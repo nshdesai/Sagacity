@@ -1,7 +1,7 @@
 {
-  "name": "hackathon-starter",
+  "name": "Sagacity",
   "version": "5.2.0",
-  "description": "A boilerplate for Node.js web applications",
+  "description": "An application that takes pictures or fragmented notes and converts them into high quality, readable and organized notes",
   "repository": {
     "type": "git",
     "url": "https://github.com/sahat/hackathon-starter.git"
