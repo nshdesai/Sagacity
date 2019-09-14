@@ -13,6 +13,9 @@ logs
 results
 tmp
 
+#Ignore all uploads
+uploads/
+
 # Optional npm cache directory
 .npm
 
