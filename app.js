@@ -33,7 +33,8 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
-const convertController = require('./controllers/convert')
+const convertController = require('./controllers/convert');
+const notesController = require('./controllers/notes');
 
 /**
  * API keys and Passport configuration.
@@ -145,7 +146,9 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
-app.get('/convert', convertController.index);
+app.get('/convert', lusca({ csrf: true }), convertController.getFileUpload);
+app.post('/convert', upload.single('myFile'), lusca({ csrf: true }), convertController.postFileUpload);
+app.get('/notes', notesController.index);
 
 /**
  * API examples routes.
