@@ -4,7 +4,7 @@
   "description": "An application that takes pictures or fragmented notes and converts them into high quality, readable and organized notes",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/nshdesai/Sagacity"
   },
   "license": "MIT",
   "author": "Sahat Yalkabov",
