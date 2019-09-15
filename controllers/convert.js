@@ -30,7 +30,12 @@ exports.postFileUpload = (req, res) => {
 
         User.findById(req.user.id, (err, user) => {
             if (err) { return next(err); }
-            user.notes.images.push({ contentType: req.file.mimetype, image: new Buffer(encode_image, 'base64') });
+            user.notes.images.push({
+                contentType: req.file.mimetype,
+                image: new Buffer(encode_image, 'base64'),
+                filename: req.file.filename
+            });
+
             user.save((err) => {
                 req.flash('info', { msg: 'Your image has been saved' });
                 // done(err, user);

@@ -4,5 +4,8 @@ block content
   h1
     i.fas.fa-align-justify.fa-sm 
     | Notes
-    p.lead An application that takes pictures or fragmented notes and converts them into high quality, readable and organized notes
     hr
+  
+  div.container
+    each image in notes.images
+      img(src=`data:image/jpeg;base64, ${image.image.toString('base64')}`, width='40%', height='40%')

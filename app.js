@@ -150,6 +150,20 @@ app.get('/convert', lusca({ csrf: true }), convertController.getFileUpload);
 app.post('/convert', upload.single('myFile'), lusca({ csrf: true }), convertController.postFileUpload);
 app.get('/notes', notesController.index);
 
+app.get('/public/uploads/:id', (req, res) => {
+    var filename = req.params.id;
+
+    db.collection('mycollection').findOne({ '_id': ObjectId(filename) }, (err, result) => {
+
+        if (err) return console.log(err)
+
+        res.contentType('image/jpeg');
+        res.send(result.image.buffer)
+
+
+    })
+})
+
 /**
  * API examples routes.
  */
