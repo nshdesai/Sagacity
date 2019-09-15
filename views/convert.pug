@@ -6,10 +6,12 @@ block content
       i.fas.fa-upload.fa-sm 
       | File Upload
       p.lead Upload file to be processed into a text file. 
-  .row
+    .row
     .col-md-6
       form(role='form', enctype='multipart/form-data', method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
         .form-group
-        input(type='file', name='myFile')
-    button.btn.btn-primary(type='submit') Submit
+          label.col-form-label.font-weight-bold File Input
+          .col-md-6
+            input(type='file', name='myFile')
+        button.btn.btn-primary(type='submit') Submit
