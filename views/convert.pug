@@ -6,6 +6,7 @@ block content
       i.fas.fa-upload.fa-sm 
       | File Upload
       p.lead Upload file to be processed into a text file. 
+      hr
     .row
     .col-md-6
       form(role='form', enctype='multipart/form-data', method='POST')
@@ -13,5 +14,7 @@ block content
         .form-group
           label.col-form-label.font-weight-bold File Input
           .col-md-6
+          span
             input(type='file', name='myFile')
         button.btn.btn-primary(type='submit') Submit
+        span
