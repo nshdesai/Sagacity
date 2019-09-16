@@ -3,8 +3,8 @@
  * Notes page.
  */
 exports.index = (req, res) => {
-    res.render('notes', {
-        title: 'Notes',
-        notes: req.user.notes
-    });
+  res.render('notes', {
+    title: 'Notes',
+    notes: req.user.notes
+  });
 };
