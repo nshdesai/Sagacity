@@ -1,4 +1,7 @@
 const vision = require('@google-cloud/vision');
+const fs = require('fs');
+const User = require('../models/User');
+
 /**
  * GET /
  * Convert page.
@@ -20,37 +23,35 @@ exports.getFileUpload = (req, res) => {
   });
 };
 
+async function quickstart(imagePath) {
+  // Imports the Google Cloud client librar
+
+  // Creates a client
+  const client = new vision.ImageAnnotatorClient();
+
+  // Performs label detection on the image file
+  console.log(`Image path :${imagePath}`);
+  const [result] = await client.labelDetection(imagePath);
+  console.log(`Result :${result}`);
+  const labels = result.labelAnnotations;
+  console.log('Labels:');
+  labels.forEach((label) => console.log(label.description));
+
+  return labels;
+}
+
 exports.postFileUpload = (req, res) => {
-  const User = require('../models/User');
-  const fs = require('fs');
   if (!req.file) {
     req.flash('errors', { msg: 'You did not select a file.' });
   } else {
-    async function quickstart(image_path) {
-      // Imports the Google Cloud client librar
-
-      // Creates a client
-      const client = new vision.ImageAnnotatorClient();
-
-      // Performs label detection on the image file
-      console.log(`Image path :${image_path}`);
-      const [result] = await client.labelDetection(image_path);
-      console.log(`Result :${result}`);
-      const labels = result.labelAnnotations;
-      console.log('Labels:');
-      labels.forEach((label) => console.log(label.description));
-
-      return labels;
-    }
-
     const img = fs.readFileSync(req.file.path);
-    const encode_image = img.toString('base64');
+    const encodeImage = img.toString('base64');
 
-    User.findById(req.user.id, (err, user) => {
+    User.findById(req.user.id, (err, user, next) => {
       if (err) { return next(err); }
       user.notes.images.push({
         contentType: req.file.mimetype,
-        image: new Buffer(encode_image, 'base64'),
+        image: Buffer.alloc(encodeImage, 'base64'),
         filename: req.file.filename
       });
 
@@ -58,9 +59,9 @@ exports.postFileUpload = (req, res) => {
         desc: quickstart(req.file.path)
       });
 
-      user.save((err) => {
+      user.save((err, done) => {
         req.flash('info', { msg: 'Your image has been saved' });
-        // done(err, user);
+        done(err, user);
       });
     });
     req.flash('success', { msg: 'File was uploaded successfully.' });
