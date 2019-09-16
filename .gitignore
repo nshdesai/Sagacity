@@ -13,6 +13,9 @@ logs
 results
 tmp
 
+#Ignore some python generated files
+__pycache__/
+
 #Ignore all uploads
 uploads/
 
